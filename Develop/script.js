@@ -1,44 +1,44 @@
-var today = moment();
-var timeBlockEl = document.querySelector('.container');
+var presentTime = moment();
+var hourSectionEl = document.querySelector('.container');
 
-$('#currentDay').text(today.format('LLLL'));
+$('#presentDay').text(presentTime.format('LLLL'));
 $('.saveBtn').on('click', function () {
-  var textValue = $(this).siblings('.description').val();
+  var textValue = $(this).siblings('.type-tasks').val();
   var timeKey = $(this).parent().attr('id');
 
   localStorage.setItem(timeKey, textValue);
 });
 
-$('#hour8 .description').val(localStorage.getItem('hour8'));
-$('#hour9 .description').val(localStorage.getItem('hour9'));
-$('#hour10 .description').val(localStorage.getItem('hour10'));
-$('#hour11 .description').val(localStorage.getItem('hour11'));
-$('#hour12 .description').val(localStorage.getItem('hour12'));
-$('#hour13 .description').val(localStorage.getItem('hour13'));
-$('#hour14 .description').val(localStorage.getItem('hour14'));
-$('#hour15 .description').val(localStorage.getItem('hour15'));
-$('#hour16 .description').val(localStorage.getItem('hour16'));
-$('#hour17 .description').val(localStorage.getItem('hour17'));
-$('#hour18 .description').val(localStorage.getItem('hour18'));
+$('#time8 .type-tasks').val(localStorage.getItem('time8'));
+$('#time9 .type-tasks').val(localStorage.getItem('time9'));
+$('#time10 .type-tasks').val(localStorage.getItem('time10'));
+$('#time11 .type-tasks').val(localStorage.getItem('time11'));
+$('#time12 .type-tasks').val(localStorage.getItem('time12'));
+$('#time1 .type-tasks').val(localStorage.getItem('time1'));
+$('#time2 .type-tasks').val(localStorage.getItem('time2'));
+$('#time3 .type-tasks').val(localStorage.getItem('time3'));
+$('#time4 .type-tasks').val(localStorage.getItem('time4'));
+$('#time5 .type-tasks').val(localStorage.getItem('time5'));
+$('#time6 .type-tasks').val(localStorage.getItem('time6'));
 
 function auditTask() {
-  var currentHour = today.hours();
+  var currenttime = presentTime.hours();
 
-  $('.time-block').each(function () {
-    var timeId = parseInt($(this).attr('id').split("hour")[1]);
+  $('.hour-section').each(function () {
+    var timeId = parseInt($(this).attr('id').split("time")[1]);
 
-    if (timeId < currentHour) {
-      $(this).addClass('past');
+    if (timeId < currenttime) {
+      $(this).addClass('yesterday');
     } 
-    else if (timeId === currentHour) {
-      $(this).removeClass('past');
-      $(this).removeClass('future');
+    else if (timeId === currenttime) {
+      $(this).removeClass('yesterday');
+      $(this).removeClass('tomorrow');
       $(this).addClass('present');
     } 
     else {
-      $(this).removeClass('past');
+      $(this).removeClass('yesterday');
       $(this).removeClass('present');
-      $(this).addClass('future');
+      $(this).addClass('tomorrow');
     }
   });
 }
