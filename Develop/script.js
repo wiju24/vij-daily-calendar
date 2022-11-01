@@ -17,15 +17,11 @@ function performTask() {
 
     if (hourId < currenttime) {
       $(this).addClass('yesterday');
-    } 
-    else if (hourId === currenttime) {
-      $(this).removeClass('yesterday');
-      $(this).removeClass('tomorrow');
+    } else if (hourId === currenttime) {
+      $(this).removeClass('yesterday','tomorrow');
       $(this).addClass('now');
-    } 
-    else {
-      $(this).removeClass('yesterday');
-      $(this).removeClass('now');
+    } else {
+      $(this).removeClass('yesterday', 'now');
       $(this).addClass('tomorrow');
     }
   });
@@ -38,12 +34,12 @@ $('#time9 .type-tasks').val(localStorage.getItem('time9'));
 $('#time10 .type-tasks').val(localStorage.getItem('time10'));
 $('#time11 .type-tasks').val(localStorage.getItem('time11'));
 $('#time12 .type-tasks').val(localStorage.getItem('time12'));
-$('#time1 .type-tasks').val(localStorage.getItem('time1'));
-$('#time2 .type-tasks').val(localStorage.getItem('time2'));
-$('#time3 .type-tasks').val(localStorage.getItem('time3'));
-$('#time4 .type-tasks').val(localStorage.getItem('time4'));
-$('#time5 .type-tasks').val(localStorage.getItem('time5'));
-$('#time6 .type-tasks').val(localStorage.getItem('time6'));
+$('#time13 .type-tasks').val(localStorage.getItem('time13'));
+$('#time14 .type-tasks').val(localStorage.getItem('time14'));
+$('#time15 .type-tasks').val(localStorage.getItem('time15'));
+$('#time16 .type-tasks').val(localStorage.getItem('time16'));
+$('#time17 .type-tasks').val(localStorage.getItem('time17'));
+$('#time18 .type-tasks').val(localStorage.getItem('time18'));
 
 
 
