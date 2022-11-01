@@ -9,7 +9,7 @@ $('.saveTaskBtn').on('click', function () {
   localStorage.setItem(hourLog, inputTextValue);
 });
 
-function performTask() {
+function presentDailyTask() {
   var currenttime = presentTime.hours();
 
   $('.hour-section').each(function () {
@@ -27,7 +27,7 @@ function performTask() {
   });
 }
 
-performTask();
+presentDailyTask();
 
 $('#time8 .type-tasks').val(localStorage.getItem('time8'));
 $('#time9 .type-tasks').val(localStorage.getItem('time9'));
