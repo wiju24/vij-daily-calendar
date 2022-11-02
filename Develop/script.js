@@ -29,19 +29,35 @@ function presentDailyTask() {
 
 presentDailyTask();
 
-$('#time8 .type-tasks').val(localStorage.getItem('time8'));
-$('#time9 .type-tasks').val(localStorage.getItem('time9'));
-$('#time10 .type-tasks').val(localStorage.getItem('time10'));
-$('#time11 .type-tasks').val(localStorage.getItem('time11'));
-$('#time12 .type-tasks').val(localStorage.getItem('time12'));
-$('#time13 .type-tasks').val(localStorage.getItem('time13'));
-$('#time14 .type-tasks').val(localStorage.getItem('time14'));
-$('#time15 .type-tasks').val(localStorage.getItem('time15'));
-$('#time16 .type-tasks').val(localStorage.getItem('time16'));
-$('#time17 .type-tasks').val(localStorage.getItem('time17'));
-$('#time18 .type-tasks').val(localStorage.getItem('time18'));
+// $('#time8 .type-tasks').val(localStorage.getItem('time8'));
+// $('#time9 .type-tasks').val(localStorage.getItem('time9'));
+// $('#time10 .type-tasks').val(localStorage.getItem('time10'));
+// $('#time11 .type-tasks').val(localStorage.getItem('time11'));
+// $('#time12 .type-tasks').val(localStorage.getItem('time12'));
+// $('#time13 .type-tasks').val(localStorage.getItem('time13'));
+// $('#time14 .type-tasks').val(localStorage.getItem('time14'));
+// $('#time15 .type-tasks').val(localStorage.getItem('time15'));
+// $('#time16 .type-tasks').val(localStorage.getItem('time16'));
+// $('#time17 .type-tasks').val(localStorage.getItem('time17'));
+// $('#time18 .type-tasks').val(localStorage.getItem('time18'));
 
+let _taskData = [
+  {id: time8},
+  {id: time9},
+  {id: time10},
+  {id: time11},
+  {id: time12},
+  {id: time13},
+  {id: time14},
+  {id: time15},
+  {id: time16},
+  {id: time17},
+  {id: time18},
+]
 
+localStorage.setItem('taskData', JSON.stringify(_taskData));
+
+let _retrieveUserData = JSON.parse(localStorage.getItem('taskData'));
 
 setTimeout(function () {
   location = '';
