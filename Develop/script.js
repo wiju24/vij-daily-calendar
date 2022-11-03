@@ -1,13 +1,43 @@
 var presentTime = moment();
 var hourSectionEl = document.querySelector('.container');
+let _retrieveUserData = JSON.parse(localStorage.getItem('taskData'))||[];
 
 $('#presentDay').text(presentTime.format('LLLL'));
 $('.saveTaskBtn').on('click', function () {
   var inputTextValue = $(this).siblings('.type-tasks').val();
   var hourLog = $(this).parent().attr('id');
 
-  localStorage.setItem(hourLog, inputTextValue);
+  var taskObject={
+    id:hourLog,
+    value:inputTextValue
+  }
+
+  var taskIndex=_retrieveUserData.findIndex(timeslot=>timeslot.id==hourLog)
+
+  if(taskIndex!==-1){
+    _retrieveUserData[taskIndex]=taskObject
+  }else{
+    _retrieveUserData.push(taskObject)
+  }
+    
+  localStorage.setItem('taskData',JSON.stringify( _retrieveUserData));
 });
+
+function setTasks(){
+  const timeslots = document.querySelectorAll(".hour-section");
+
+  timeslots.forEach(function(timeslot){
+
+  var id=timeslot.id
+
+  var value=_retrieveUserData.find(timeslot=>timeslot.id==id)?.value
+
+  var textarea=timeslot.children[1]
+
+  if(value!=undefined){
+    textarea.innerText=value
+  }})
+};
 
 function presentDailyTask() {
   var currenttime = presentTime.hours();
@@ -26,39 +56,5 @@ function presentDailyTask() {
     }
   });
 }
-
+setTasks();
 presentDailyTask();
-
-// $('#time8 .type-tasks').val(localStorage.getItem('time8'));
-// $('#time9 .type-tasks').val(localStorage.getItem('time9'));
-// $('#time10 .type-tasks').val(localStorage.getItem('time10'));
-// $('#time11 .type-tasks').val(localStorage.getItem('time11'));
-// $('#time12 .type-tasks').val(localStorage.getItem('time12'));
-// $('#time13 .type-tasks').val(localStorage.getItem('time13'));
-// $('#time14 .type-tasks').val(localStorage.getItem('time14'));
-// $('#time15 .type-tasks').val(localStorage.getItem('time15'));
-// $('#time16 .type-tasks').val(localStorage.getItem('time16'));
-// $('#time17 .type-tasks').val(localStorage.getItem('time17'));
-// $('#time18 .type-tasks').val(localStorage.getItem('time18'));
-
-let _taskData = [
-  {id: time8},
-  {id: time9},
-  {id: time10},
-  {id: time11},
-  {id: time12},
-  {id: time13},
-  {id: time14},
-  {id: time15},
-  {id: time16},
-  {id: time17},
-  {id: time18},
-]
-
-localStorage.setItem('taskData', JSON.stringify(_taskData));
-
-let _retrieveUserData = JSON.parse(localStorage.getItem('taskData'));
-
-setTimeout(function () {
-  location = '';
-}, 1000 * 60);
